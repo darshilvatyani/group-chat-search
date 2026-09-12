@@ -1,0 +1,17 @@
+{
+  "name": "group-chat-search",
+  "version": "1.0.0",
+  "description": "Context-aware semantic search engine for group chats",
+  "scripts": {
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev"
+  },
+  "keywords": [
+    "chat-search",
+    "semantic-search",
+    "mern",
+    "hinglish"
+  ],
+  "author": "",
+  "license": "ISC"
+}
