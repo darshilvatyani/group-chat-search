@@ -28,11 +28,17 @@ export class VectorStore {
   }
 
   loadFromDisk() {
-    const enrichedPath = path.join(__dirname, '../../data/enriched_corpus.json');
-    const binPath = path.join(__dirname, '../../data/embeddings.bin');
+    let enrichedPath = path.join(__dirname, '../../data/enriched_corpus.json');
+    let binPath = path.join(__dirname, '../../data/embeddings.bin');
+
+    // Fallback for Vercel serverless deployment where cwd is project root
+    if (!fs.existsSync(enrichedPath)) {
+      enrichedPath = path.join(process.cwd(), 'server/data/enriched_corpus.json');
+      binPath = path.join(process.cwd(), 'server/data/embeddings.bin');
+    }
 
     if (!fs.existsSync(enrichedPath) || !fs.existsSync(binPath)) {
-      throw new Error('Precomputed index not found. Run "npm run index:corpus" first.');
+      throw new Error(`Precomputed index not found at ${enrichedPath}`);
     }
 
     const messages = JSON.parse(fs.readFileSync(enrichedPath, 'utf-8'));
@@ -99,12 +105,10 @@ export class VectorStore {
     for (let i = 0; i < this.messages.length; i++) {
       const msg = this.messages[i];
 
-      // Metadata Filter: Sender
       if (sender && msg.sender.toLowerCase() !== sender.toLowerCase()) {
         continue;
       }
 
-      // Metadata Filter: Time Range
       if (startMs !== null || endMs !== null) {
         const msgMs = new Date(msg.timestamp).getTime();
         if (startMs !== null && msgMs < startMs) continue;
@@ -114,7 +118,6 @@ export class VectorStore {
       const rawScore = cosineSimilarity(queryVector, this.embeddings[i]);
       let finalScore = rawScore;
 
-      // Decision boost: prioritizes messages representing closure / resolution
       if (decisionBoost && msg.is_decision) {
         finalScore += 0.12;
       }

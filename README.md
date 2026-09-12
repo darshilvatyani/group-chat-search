@@ -6,7 +6,11 @@
 
 ---
 
-## 🚀 Live Demo & Quickstart
+## 🚀 Live Production Deployment
+
+👉 **Live Web App**: [https://group-chat-search.vercel.app](https://group-chat-search.vercel.app)
+
+## 💻 Local Quickstart
 
 ### Prerequisites
 - Node.js v18+ and npm installed
