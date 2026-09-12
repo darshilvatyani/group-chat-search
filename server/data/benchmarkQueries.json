@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "query": "When was the mountain vacation locked in?",
+    "target_id": 2195,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for Manali trip decision"
+  },
+  {
+    "id": 2,
+    "query": "Who paid the apartment security deposit advance?",
+    "target_id": 890,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for flat deposit token transfer"
+  },
+  {
+    "id": 3,
+    "query": "What did we conclude regarding Kabir's birthday gift?",
+    "target_id": 3305,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for surprise birthday gift consensus"
+  },
+  {
+    "id": 4,
+    "query": "Did someone reserve our dinner table for Friday evening?",
+    "target_id": 1512,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for Bawarchi table reservation"
+  },
+  {
+    "id": 5,
+    "query": "Where should everyone submit their trip expenses?",
+    "target_id": 2240,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for Settle Up expense tracking"
+  },
+  {
+    "id": 6,
+    "query": "What was decided about the rental lease duration?",
+    "target_id": 905,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for 11 months stamp paper agreement"
+  },
+  {
+    "id": 7,
+    "query": "How will our crew travel to Himachal?",
+    "target_id": 2225,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for Delhi sleeper Volvo bus commute"
+  },
+  {
+    "id": 8,
+    "query": "Which audio headset model got purchased?",
+    "target_id": 3290,
+    "category": "decision",
+    "is_zero_overlap": true,
+    "description": "Hard zero-overlap query for Sony WH-1000XM5 headset"
+  },
+  {
+    "id": 9,
+    "query": "When did we decide on Manali trip dates?",
+    "target_id": 2210,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "Decision query for Manali 14-18 April confirmation"
+  },
+  {
+    "id": 10,
+    "query": "What did Sneha suggest about Himachal mountains?",
+    "target_id": 2165,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "Proposing mountain trip weather"
+  },
+  {
+    "id": 11,
+    "query": "Why did Priya say Goa is more expensive than Manali?",
+    "target_id": 2180,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "Cost comparison between Goa flights and Manali bus"
+  },
+  {
+    "id": 12,
+    "query": "What rent and deposit did the broker quote for Indiranagar flat?",
+    "target_id": 865,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "Initial 42k rent and 2 lakh deposit quote"
+  },
+  {
+    "id": 13,
+    "query": "How much deposit did Aarav negotiate with the owner?",
+    "target_id": 882,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "Aarav bargaining deposit to 1.5L"
+  },
+  {
+    "id": 14,
+    "query": "What surprise gift did Ananya propose for Kabir's 25th birthday?",
+    "target_id": 3260,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "Secret birthday gift initiation"
+  },
+  {
+    "id": 15,
+    "query": "Why did Rohan suggest noise cancelling headphones for Kabir?",
+    "target_id": 3275,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "Headphones for gym and travel"
+  },
+  {
+    "id": 16,
+    "query": "Which cinema and show timing was booked for Dune 2?",
+    "target_id": 540,
+    "category": "decision",
+    "is_zero_overlap": false,
+    "description": "PVR Forum Koramangala 7:30 PM show"
+  },
+  {
+    "id": 17,
+    "query": "What did Priya say about mutual funds SIP?",
+    "target_id": 2780,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Priya financial advice on 15k monthly SIP"
+  },
+  {
+    "id": 18,
+    "query": "What did Sneha say about artisanal sourdough pizza in Koramangala?",
+    "target_id": 11,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Sneha cafe recommendation"
+  },
+  {
+    "id": 19,
+    "query": "What did Sneha cook that was super spicy?",
+    "target_id": 98,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Sneha homemade spicy biryani"
+  },
+  {
+    "id": 20,
+    "query": "What dessert did Sneha crave and suggest ordering?",
+    "target_id": 53,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Sneha brownie craving"
+  },
+  {
+    "id": 21,
+    "query": "What did Rohan say about the new MacBook update?",
+    "target_id": 291,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Rohan praising MacBook battery life"
+  },
+  {
+    "id": 22,
+    "query": "What issue did Rohan face with Docker?",
+    "target_id": 274,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Rohan docker memory leak"
+  },
+  {
+    "id": 23,
+    "query": "What did Rohan say about tactile switches on mechanical keyboards?",
+    "target_id": 8,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Rohan mechanical keyboard enthusiasm"
+  },
+  {
+    "id": 24,
+    "query": "What size SD card did Rohan put in the camera?",
+    "target_id": 2154,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Rohan 128GB memory card for trip"
+  },
+  {
+    "id": 25,
+    "query": "What did Aarav say after finishing his gym workout?",
+    "target_id": 99,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Aarav feeling energized after gym"
+  },
+  {
+    "id": 26,
+    "query": "Where was Aarav stuck in traffic for 45 minutes?",
+    "target_id": 124,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Aarav traffic rant at Silk Board"
+  },
+  {
+    "id": 27,
+    "query": "What weekend drive destination did Aarav suggest?",
+    "target_id": 28,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Aarav weekend drive to Nandi Hills"
+  },
+  {
+    "id": 28,
+    "query": "What did Aarav say about Rinku Singh finishing the match?",
+    "target_id": 65,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Aarav cricket match excitement"
+  },
+  {
+    "id": 29,
+    "query": "What did Ananya say about concert tickets selling out in 3 minutes?",
+    "target_id": 248,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Ananya concert tickets sadness"
+  },
+  {
+    "id": 30,
+    "query": "What did Ananya share about her Spotify playlist?",
+    "target_id": 3,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Ananya updating Spotify playlist"
+  },
+  {
+    "id": 31,
+    "query": "What animal did Ananya spot outside the office?",
+    "target_id": 47,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Ananya cute stray puppy"
+  },
+  {
+    "id": 32,
+    "query": "Why was Vikram busy with back to back meetings?",
+    "target_id": 29,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Vikram sprint reviews"
+  },
+  {
+    "id": 33,
+    "query": "What did Vikram say about tonight's production release?",
+    "target_id": 15,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Vikram production release fingers crossed"
+  },
+  {
+    "id": 34,
+    "query": "What hardware problem did Vikram report with his laptop screen?",
+    "target_id": 18,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Vikram flickering laptop screen"
+  },
+  {
+    "id": 35,
+    "query": "When did Neha book the badminton court for Saturday?",
+    "target_id": 14,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Neha badminton court at 7 AM"
+  },
+  {
+    "id": 36,
+    "query": "What sale did Neha remind everyone to check wishlists for?",
+    "target_id": 27,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Neha Amazon sale reminder"
+  },
+  {
+    "id": 37,
+    "query": "What link did Neha share on email?",
+    "target_id": 93,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Neha Google Photos album link"
+  },
+  {
+    "id": 38,
+    "query": "What game did Kabir want to play in a custom room?",
+    "target_id": 84,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Kabir Valorant custom room"
+  },
+  {
+    "id": 39,
+    "query": "What beverage did Kabir order?",
+    "target_id": 74,
+    "category": "speaker",
+    "is_zero_overlap": false,
+    "description": "Kabir ordering cold coffee"
+  },
+  {
+    "id": 40,
+    "query": "What did Vikram share about Q1 appraisal cycle?",
+    "target_id": 1120,
+    "category": "temporal",
+    "is_zero_overlap": false,
+    "description": "Vikram HR appraisal portal release in February"
+  }
+]

@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "generate:chat": "node scripts/generateChat.js"
+    "generate:chat": "node scripts/generateChat.js",
+    "verify:benchmark": "node scripts/verifyZeroOverlap.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
