@@ -8,9 +8,12 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "generate:chat": "node scripts/generateChat.js",
-    "verify:benchmark": "node scripts/verifyZeroOverlap.js"
+    "verify:benchmark": "node scripts/verifyZeroOverlap.js",
+    "index:corpus": "node scripts/indexCorpus.js"
   },
   "dependencies": {
+    "@xenova/transformers": "^2.17.2",
+    "chrono-node": "^2.10.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
