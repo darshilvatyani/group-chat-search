@@ -101,6 +101,21 @@ app.get('/api/messages/:id/context', (req, res) => {
   }
 });
 
+
+// 6. Benchmark Results & Live Evaluation Endpoint
+app.get("/api/benchmarks/results", (req, res) => {
+  try {
+    const resultsPath = path.join(__dirname, "../data/benchmark_results.json");
+    if (fs.existsSync(resultsPath)) {
+      const results = JSON.parse(fs.readFileSync(resultsPath, "utf-8"));
+      return res.json({ success: true, ...results });
+    }
+    res.status(404).json({ success: false, error: "Benchmark results not yet generated. Run npm run benchmark first." });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // 5. Main Semantic Search Endpoint
 app.post('/api/search', async (req, res) => {
   try {

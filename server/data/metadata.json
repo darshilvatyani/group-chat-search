@@ -2,8 +2,8 @@
   "total_messages": 4200,
   "seed": 20260412,
   "time_range": {
-    "start": "2024-01-01T09:59:15.857Z",
-    "end": "2024-06-30T23:16:00.000Z"
+    "start": "2024-01-01T10:12:15.857Z",
+    "end": "2024-06-30T23:26:00.000Z"
   },
   "participants": [
     "Aarav",
@@ -16,30 +16,14 @@
     "Neha"
   ],
   "participant_distribution": {
-    "Neha": 500,
-    "Vikram": 532,
-    "Ananya": 529,
-    "Priya": 540,
-    "Rohan": 495,
-    "Sneha": 580,
-    "Kabir": 496,
-    "Aarav": 528
+    "Sneha": 532,
+    "Neha": 527,
+    "Ananya": 527,
+    "Priya": 529,
+    "Rohan": 514,
+    "Aarav": 549,
+    "Vikram": 528,
+    "Kabir": 494
   },
-  "decision_arcs": [
-    {
-      "arc": "Flat Hunting & Deposit",
-      "key_id": 890,
-      "timeframe": "February 2024"
-    },
-    {
-      "arc": "Manali Vacation Planning",
-      "key_id": 2195,
-      "timeframe": "April 2024"
-    },
-    {
-      "arc": "Kabir Birthday Surprise",
-      "key_id": 3305,
-      "timeframe": "May 2024"
-    }
-  ]
+  "anchors_count": 40
 }

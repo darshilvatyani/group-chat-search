@@ -5,15 +5,13 @@ import {
   Flame,
   User,
   Clock,
-  Compass,
   CheckCircle2,
-  Layers,
   ArrowRight,
-  RotateCcw,
   Zap,
-  Info,
-  Calendar,
-  MessageSquare
+  MessageSquare,
+  BarChart3,
+  X,
+  TrendingDown
 } from 'lucide-react';
 
 const PARTICIPANT_COLORS = {
@@ -30,6 +28,8 @@ const PARTICIPANT_COLORS = {
 export default function App() {
   const [query, setQuery] = useState('');
   const [benchmarks, setBenchmarks] = useState([]);
+  const [benchmarkSummary, setBenchmarkSummary] = useState(null);
+  const [showBenchmarkModal, setShowBenchmarkModal] = useState(false);
   const [activeTab, setActiveTab] = useState('hard8'); // 'hard8', 'speaker', 'temporal', 'decision'
   const [loading, setLoading] = useState(false);
   const [searchResponse, setSearchResponse] = useState(null);
@@ -43,6 +43,13 @@ export default function App() {
       .then(res => res.json())
       .then(data => {
         if (data.success) setBenchmarks(data.queries);
+      })
+      .catch(console.error);
+
+    fetch('/api/benchmarks/results')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) setBenchmarkSummary(data.summary);
       })
       .catch(console.error);
 
@@ -70,7 +77,6 @@ export default function App() {
       if (data.success) {
         setSearchResponse(data);
         setSelectedResultIndex(0);
-        // Scroll target message into view smoothly
         setTimeout(() => {
           targetRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 150);
@@ -87,7 +93,6 @@ export default function App() {
     handleSearch(benchmarkQuery.query);
   };
 
-  // Filter benchmark categories
   const hard8Queries = benchmarks.filter(b => b.is_zero_overlap);
   const speakerQueries = benchmarks.filter(b => b.category === 'speaker');
   const temporalQueries = benchmarks.filter(b => b.category === 'temporal');
@@ -101,14 +106,26 @@ export default function App() {
       <aside className="flex w-96 flex-col border-r border-stone-200 bg-white shadow-sm">
         {/* Header Branding */}
         <div className="border-b border-stone-200 p-5">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-stone-900 text-white shadow-sm">
-              <MessageSquare className="h-4 w-4" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-stone-900 text-white shadow-sm">
+                <MessageSquare className="h-4 w-4" />
+              </div>
+              <div>
+                <h1 className="text-base font-bold tracking-tight text-stone-900">ChatArchive</h1>
+                <p className="text-xs font-medium text-stone-500">Context-Aware Group Search</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-base font-bold tracking-tight text-stone-900">ChatArchive</h1>
-              <p className="text-xs font-medium text-stone-500">Context-Aware Group Search</p>
-            </div>
+
+            {/* Benchmark Report Modal Trigger Button */}
+            <button
+              onClick={() => setShowBenchmarkModal(true)}
+              className="flex items-center gap-1.5 rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-900 shadow-sm hover:bg-amber-100 transition-colors"
+              title="View 40-query accuracy report"
+            >
+              <BarChart3 className="h-3.5 w-3.5 text-amber-700" />
+              <span>Report</span>
+            </button>
           </div>
 
           {/* Dataset Pills */}
@@ -492,6 +509,99 @@ export default function App() {
           )}
         </div>
       </main>
+
+      {/* 3. BENCHMARK ACCURACY REPORT MODAL */}
+      {showBenchmarkModal && benchmarkSummary && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/40 backdrop-blur-xs p-4">
+          <div className="w-full max-w-2xl rounded-2xl border border-stone-200 bg-white p-6 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-stone-100 pb-4">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-100 text-amber-900">
+                  <BarChart3 className="h-4 w-4" />
+                </div>
+                <div>
+                  <h2 className="text-base font-bold text-stone-900">Benchmark Evaluation Report</h2>
+                  <p className="text-xs text-stone-500">40 Labeled Queries across 4,200 Group Messages</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowBenchmarkModal(false)}
+                className="rounded-lg p-1.5 text-stone-400 hover:bg-stone-100 hover:text-stone-700"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* Score Grid Cards */}
+            <div className="mt-5 grid grid-cols-3 gap-3">
+              <div className="rounded-xl border border-stone-200 bg-stone-50/50 p-4">
+                <span className="text-xs font-medium text-stone-500">Warmup 32 Recall@1</span>
+                <div className="mt-1 text-2xl font-bold text-stone-900">{benchmarkSummary.warmup_32.recall_at_1}</div>
+                <span className="text-[11px] text-stone-400">Vocabulary overlap present</span>
+              </div>
+              <div className="rounded-xl border border-amber-200 bg-amber-50/40 p-4">
+                <span className="text-xs font-semibold text-amber-800">Hard-8 Recall@1</span>
+                <div className="mt-1 text-2xl font-bold text-amber-950">{benchmarkSummary.hard_8_zero_overlap.recall_at_1}</div>
+                <span className="text-[11px] text-amber-700">Strictly 0 word overlap</span>
+              </div>
+              <div className="rounded-xl border border-rose-200 bg-rose-50/40 p-4">
+                <span className="text-xs font-semibold text-rose-800 flex items-center gap-1">
+                  <TrendingDown className="h-3.5 w-3.5" /> Accuracy Gap
+                </span>
+                <div className="mt-1 text-2xl font-bold text-rose-950">{benchmarkSummary.accuracy_gap.top1_gap}</div>
+                <span className="text-[11px] text-rose-700">Pure semantic drop</span>
+              </div>
+            </div>
+
+            {/* Philosophical Callout Quote from Assignment */}
+            <div className="mt-4 rounded-xl border border-stone-200 bg-stone-50 p-4 text-xs text-stone-700 leading-relaxed">
+              <p className="font-semibold text-stone-900 mb-1">💡 The Core Finding of this Project:</p>
+              <p className="italic text-stone-600">
+                "The gap between those two numbers is the actual result of this project, and we would rather see an ugly gap reported than a pretty one hidden."
+              </p>
+              <p className="mt-2 text-[11px] text-stone-500">
+                Standard queries achieve <strong>{benchmarkSummary.warmup_32.recall_at_1}</strong> because lexicons align. When vocabulary overlap drops to 0, accuracy falls to <strong>{benchmarkSummary.hard_8_zero_overlap.recall_at_1}</strong>, exposing the exact boundary where dense vector representation relies entirely on conversational thread envelopes.
+              </p>
+            </div>
+
+            {/* Metrics Breakdown Table */}
+            <div className="mt-4 border-t border-stone-100 pt-4">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-2">
+                Retrieval Performance Breakdown
+              </h4>
+              <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                <div className="flex justify-between rounded-lg bg-stone-100/70 px-3 py-2">
+                  <span className="text-stone-600">Overall Recall@1 (40 queries):</span>
+                  <span className="font-bold text-stone-900">{benchmarkSummary.overall.recall_at_1}</span>
+                </div>
+                <div className="flex justify-between rounded-lg bg-stone-100/70 px-3 py-2">
+                  <span className="text-stone-600">Overall Recall@5 (40 queries):</span>
+                  <span className="font-bold text-stone-900">{benchmarkSummary.overall.recall_at_5}</span>
+                </div>
+                <div className="flex justify-between rounded-lg bg-stone-100/70 px-3 py-2">
+                  <span className="text-stone-600">Average Query Latency:</span>
+                  <span className="font-bold text-stone-900">{benchmarkSummary.avg_latency_ms} ms</span>
+                </div>
+                <div className="flex justify-between rounded-lg bg-stone-100/70 px-3 py-2">
+                  <span className="text-stone-600">Index Scale:</span>
+                  <span className="font-bold text-stone-900">{benchmarkSummary.total_queries} queries / 4,200 msgs</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={() => setShowBenchmarkModal(false)}
+                className="rounded-xl bg-stone-900 px-5 py-2 text-xs font-semibold text-white hover:bg-stone-800 transition-colors"
+              >
+                Close Report
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
